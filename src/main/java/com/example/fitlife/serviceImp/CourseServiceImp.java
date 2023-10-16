@@ -24,23 +24,23 @@ public class CourseServiceImp implements CourseService {
   }
 
   @Override
-  public Map<String, LocalDate> getCurrentWeekDates() {
+  public String[] getCurrentWeekDates() {
     LocalDate today = LocalDate.now();
     LocalDate startOfWeek = today.with(DayOfWeek.MONDAY);
     LocalDate endOfWeek = startOfWeek.plusDays(6);
 
-    Map<String, LocalDate> weekDates = new HashMap<>();
-    weekDates.put("startOfWeek", startOfWeek);
-    weekDates.put("endOfWeek", endOfWeek);
+    String[] weekDates = new String[2];
+    weekDates[0] = startOfWeek.toString();
+    weekDates[1] = endOfWeek.toString();
 
     return weekDates;
   }
 
   @Override
   public List<Course> getCoursesForCurrentWeek(){
-    Map<String, LocalDate> weekDates = getCurrentWeekDates();
-    LocalDate startOfWeek = weekDates.get("startOfWeek");
-    LocalDate endOfWeek = weekDates.get("endOfWeek");
+    String[] weekDates = getCurrentWeekDates();
+    String startOfWeek = weekDates[0];
+    String endOfWeek = weekDates[1];
 
     return courseRepo.findCoursesBetweenDates(startOfWeek, endOfWeek);
   }

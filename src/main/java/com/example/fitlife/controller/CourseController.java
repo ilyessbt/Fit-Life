@@ -23,7 +23,7 @@ public class CourseController {
     return courseService.getAllCourses();
   }
   @GetMapping("/currentWeekDates")
-  public  Map<String, LocalDate> getCurrentWeekDates() {
+  public  String[] getCurrentWeekDates() {
     return courseService.getCurrentWeekDates();
   }
   @GetMapping("/currentWeekCourses")

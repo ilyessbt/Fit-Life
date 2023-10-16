@@ -8,7 +8,7 @@ import java.util.*;
 
 public interface CourseService {
   List<Course> getAllCourses();
-  Map<String, LocalDate> getCurrentWeekDates();
+  String[] getCurrentWeekDates();
   List<Course> getCoursesForCurrentWeek();
   Course createCourse(Course course);
 }

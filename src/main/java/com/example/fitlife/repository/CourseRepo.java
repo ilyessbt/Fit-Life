@@ -11,5 +11,5 @@ import java.util.List;
 
 public interface CourseRepo extends JpaRepository<Course,Long> {
   @Query("SELECT c FROM Course c WHERE c.start_date BETWEEN :start AND :end")
-  List<Course> findCoursesBetweenDates(@Param("start") LocalDate start, @Param("end") LocalDate end);
+  List<Course> findCoursesBetweenDates(@Param("start") String start, @Param("end") String end);
 }
