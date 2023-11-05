@@ -26,10 +26,6 @@ public class CourseController {
   public  String[] getCurrentWeekDates() {
     return courseService.getCurrentWeekDates();
   }
-  @GetMapping("/currentWeekCourses")
-  public List<Course> getCoursesForCurrentWeek() {
-    return courseService.getCoursesForCurrentWeek();
-  }
 
   @PostMapping("/create")
   public Course createCourse(@RequestBody Course course) {

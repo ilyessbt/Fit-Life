@@ -9,6 +9,5 @@ import java.util.*;
 public interface CourseService {
   List<Course> getAllCourses();
   String[] getCurrentWeekDates();
-  List<Course> getCoursesForCurrentWeek();
   Course createCourse(Course course);
 }

@@ -3,9 +3,13 @@ package com.example.fitlife.controller;
 import com.example.fitlife.model.Customer;
 import com.example.fitlife.serviceImp.CustomerServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/customers")
@@ -29,9 +33,14 @@ public class CustomerController {
     customerService.addCustomer(customer);
   }
 
-  @PutMapping("/{id}")
-  public void updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
-    customerService.updateCustomer(id, customer);
+  @PatchMapping("/{id}")
+  public ResponseEntity<Customer> partialUpdateCustomer(@PathVariable Long id, @RequestBody Customer updatedCustomer) {
+    try {
+      Customer customer = customerService.updateCustomerPartial(id, updatedCustomer);
+      return new ResponseEntity<>(customer, HttpStatus.OK);
+    } catch (NoSuchElementException e) {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
   }
 
   @DeleteMapping("/{id}")

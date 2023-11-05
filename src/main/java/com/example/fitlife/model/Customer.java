@@ -14,21 +14,7 @@ public class Customer {
   private String phonenumber;
   private String email;
   private String password;
-//  @ManyToMany(fetch = FetchType.EAGER)
-//  @JoinTable(
-//    name = "customer_course",
-//    joinColumns = @JoinColumn(name = "customer_id"),
-//    inverseJoinColumns = @JoinColumn(name = "course_id")
-//  )
-//  private List<Course> courses;
 
-//  public List<Course> getCourses() {
-//    return courses;
-//  }
-//
-//  public void setCourses(List<Course> courses) {
-//    this.courses = courses;
-//  }
 
   public Long getId() {
     return id;

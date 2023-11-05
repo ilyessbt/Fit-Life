@@ -36,14 +36,7 @@ public class CourseServiceImp implements CourseService {
     return weekDates;
   }
 
-  @Override
-  public List<Course> getCoursesForCurrentWeek(){
-    String[] weekDates = getCurrentWeekDates();
-    String startOfWeek = weekDates[0];
-    String endOfWeek = weekDates[1];
 
-    return courseRepo.findCoursesBetweenDates(startOfWeek, endOfWeek);
-  }
 
   @Override
   public Course createCourse(Course course) {

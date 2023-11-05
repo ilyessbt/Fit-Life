@@ -32,21 +32,23 @@ public class CustomerServiceImp implements CustomerService {
   public void addCustomer(Customer customer) {
     customerRepository.save(customer);
   }
-
   @Override
-  public void updateCustomer(Long id, Customer updatedCustomer) {
-    Optional<Customer> optionalCustomer = customerRepository.findById(id);
+  public Customer updateCustomerPartial(Long id, Customer updatedCustomer) {
+    Customer existingCustomer = getCustomerById(id);
 
-    if (optionalCustomer.isPresent()) {
-      Customer existingCustomer = optionalCustomer.get();
+    if (updatedCustomer.getFullname() != null) {
       existingCustomer.setFullname(updatedCustomer.getFullname());
-      existingCustomer.setProfilepic(updatedCustomer.getProfilepic());
-      existingCustomer.setPhonenumber(updatedCustomer.getPhonenumber());
-      existingCustomer.setEmail(updatedCustomer.getEmail());
-      existingCustomer.setPassword(updatedCustomer.getPassword());
-
-      customerRepository.save(existingCustomer);
     }
+
+    if (updatedCustomer.getProfilepic() != null) {
+      existingCustomer.setProfilepic(updatedCustomer.getProfilepic());
+    }
+
+    if (updatedCustomer.getPhonenumber() != null) {
+      existingCustomer.setPhonenumber(updatedCustomer.getPhonenumber());
+    }
+
+    return customerRepository.save(existingCustomer);
   }
 
   @Override

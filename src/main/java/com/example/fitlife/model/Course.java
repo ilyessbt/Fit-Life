@@ -17,16 +17,18 @@ public class Course {
   private Boolean availability;
   private LocalTime start_time;
   private LocalTime end_time;
-//  @ManyToMany(mappedBy = "courses")
-//  private List<Customer> customers;
 
-//  public List<Customer> getCustomers() {
-//    return customers;
-//  }
-//
-//  public void setCustomers(List<Customer> customers) {
-//    this.customers = customers;
-//  }
+  @ManyToOne
+  @JoinColumn(name = "coach_id")
+  private Coach coach;
+
+  public Coach getCoach() {
+    return coach;
+  }
+
+  public void setCoach(Coach coach) {
+    this.coach = coach;
+  }
 
   public Long getId() {
     return id;
