@@ -31,4 +31,14 @@ public class CourseController {
   public Course createCourse(@RequestBody Course course) {
     return courseService.createCourse(course);
   }
+
+  @DeleteMapping("/{courseId}")
+  public void deleteCourse(@PathVariable Long courseId) {
+    courseService.deleteCourse(courseId);
+  }
+
+  @PatchMapping("/{courseId}")
+  public Course updateCoursePartial(@PathVariable Long courseId, @RequestBody Course updatedCourse) {
+    return courseService.updateCoursePartial(courseId, updatedCourse);
+  }
 }

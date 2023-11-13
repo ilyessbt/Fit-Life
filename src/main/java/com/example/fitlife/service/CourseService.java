@@ -10,4 +10,7 @@ public interface CourseService {
   List<Course> getAllCourses();
   String[] getCurrentWeekDates();
   Course createCourse(Course course);
+  void deleteCourse(Long courseId);
+  Course updateCoursePartial(Long courseId, Course updatedCourse);
+
 }

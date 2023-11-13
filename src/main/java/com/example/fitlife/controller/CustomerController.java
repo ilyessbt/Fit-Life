@@ -48,8 +48,5 @@ public class CustomerController {
     customerService.deleteCustomer(id);
   }
 
-//  @PostMapping("/reserve")
-//  public void reserveCourse(@RequestParam Long customerId, @RequestParam Long courseId) {
-//    customerService.reserveCourse(customerId, courseId);
-//  }
+
 }

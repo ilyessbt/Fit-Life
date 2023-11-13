@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class CourseServiceImp implements CourseService {
@@ -42,4 +43,50 @@ public class CourseServiceImp implements CourseService {
   public Course createCourse(Course course) {
     return courseRepo.save(course);
   }
+  @Override
+  public void deleteCourse(Long courseId) {
+    courseRepo.deleteById(courseId);
+  }
+
+  @Override
+  public Course updateCoursePartial(Long courseId, Course updatedCourse) {
+    Optional<Course> existingCourseOptional = courseRepo.findById(courseId);
+
+    if (existingCourseOptional.isPresent()) {
+      Course existingCourse = existingCourseOptional.get();
+
+      if (updatedCourse.getTitle() != null) {
+        existingCourse.setTitle(updatedCourse.getTitle());
+      }
+
+      if (updatedCourse.getStart_date() != null) {
+        existingCourse.setStart_date(updatedCourse.getStart_date());
+      }
+
+      if (updatedCourse.getEnd_date() != null) {
+        existingCourse.setEnd_date(updatedCourse.getEnd_date());
+      }
+
+      if (updatedCourse.getAvailability() != null) {
+        existingCourse.setAvailability(updatedCourse.getAvailability());
+      }
+
+      if (updatedCourse.getStart_time() != null) {
+        existingCourse.setStart_time(updatedCourse.getStart_time());
+      }
+
+      if (updatedCourse.getEnd_time() != null) {
+        existingCourse.setEnd_time(updatedCourse.getEnd_time());
+      }
+
+      if (updatedCourse.getCoach() != null) {
+        existingCourse.setCoach(updatedCourse.getCoach());
+      }
+
+      return courseRepo.save(existingCourse);
+    } else {
+      return null;
+    }
+  }
+
 }
