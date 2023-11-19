@@ -13,10 +13,25 @@ public class Course {
   private Long id;
   private String title;
   private LocalDate start_date;
-  private LocalDate end_date;
   private Boolean availability;
-  private LocalTime start_time;
-  private LocalTime end_time;
+  private String time;
+  private Long spots;
+
+  public String getStart_time() {
+    return time;
+  }
+
+  public void setStart_time(String time) {
+    this.time = time;
+  }
+
+  public Long getSpots() {
+    return spots;
+  }
+
+  public void setSpots(Long spots) {
+    this.spots = spots;
+  }
 
   @ManyToOne
   @JoinColumn(name = "coach_id")
@@ -54,13 +69,7 @@ public class Course {
     this.start_date = start_date;
   }
 
-  public LocalDate getEnd_date() {
-    return end_date;
-  }
 
-  public void setEnd_date(LocalDate end_date) {
-    this.end_date = end_date;
-  }
 
   public Boolean getAvailability() {
     return availability;
@@ -70,19 +79,5 @@ public class Course {
     this.availability = availability;
   }
 
-  public LocalTime getStart_time() {
-    return start_time;
-  }
 
-  public void setStart_time(LocalTime start_time) {
-    this.start_time = start_time;
-  }
-
-  public LocalTime getEnd_time() {
-    return end_time;
-  }
-
-  public void setEnd_time(LocalTime end_time) {
-    this.end_time = end_time;
-  }
 }

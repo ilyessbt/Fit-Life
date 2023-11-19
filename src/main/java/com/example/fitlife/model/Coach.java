@@ -14,6 +14,16 @@ public class Coach {
   private String lastName;
   private int age;
 
+  private String pic;
+
+  public void setPic(String pic) {
+    this.pic = pic;
+  }
+
+  public String getPic() {
+    return pic;
+  }
+
   public Long getCoachId() {
     return coachId;
   }

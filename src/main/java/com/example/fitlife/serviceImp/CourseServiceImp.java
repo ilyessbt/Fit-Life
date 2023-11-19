@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -30,19 +28,27 @@ public class CourseServiceImp implements CourseService {
     LocalDate startOfWeek = today.with(DayOfWeek.MONDAY);
     LocalDate endOfWeek = startOfWeek.plusDays(6);
 
-    String[] weekDates = new String[2];
-    weekDates[0] = startOfWeek.toString();
-    weekDates[1] = endOfWeek.toString();
+    String[] weekDates = new String[3];
+    weekDates[0] = today.toString();
+    weekDates[1] = startOfWeek.toString();
+    weekDates[2] = endOfWeek.toString();
 
     return weekDates;
   }
 
+  public List<Course> getCoursesForCurrentWeek() {
+    String[] weekDates = getCurrentWeekDates();
+    String startOfWeek = weekDates[0];
+    String endOfWeek = weekDates[1];
 
+    return courseRepo.findCoursesBetweenDates(startOfWeek, endOfWeek);
+  }
 
   @Override
   public Course createCourse(Course course) {
     return courseRepo.save(course);
   }
+
   @Override
   public void deleteCourse(Long courseId) {
     courseRepo.deleteById(courseId);
@@ -63,9 +69,6 @@ public class CourseServiceImp implements CourseService {
         existingCourse.setStart_date(updatedCourse.getStart_date());
       }
 
-      if (updatedCourse.getEnd_date() != null) {
-        existingCourse.setEnd_date(updatedCourse.getEnd_date());
-      }
 
       if (updatedCourse.getAvailability() != null) {
         existingCourse.setAvailability(updatedCourse.getAvailability());
@@ -74,19 +77,20 @@ public class CourseServiceImp implements CourseService {
       if (updatedCourse.getStart_time() != null) {
         existingCourse.setStart_time(updatedCourse.getStart_time());
       }
-
-      if (updatedCourse.getEnd_time() != null) {
-        existingCourse.setEnd_time(updatedCourse.getEnd_time());
+      if (updatedCourse.getSpots() != null) {
+        existingCourse.setSpots(updatedCourse.getSpots());
       }
+
 
       if (updatedCourse.getCoach() != null) {
         existingCourse.setCoach(updatedCourse.getCoach());
       }
+
+
 
       return courseRepo.save(existingCourse);
     } else {
       return null;
     }
   }
-
 }

@@ -33,12 +33,18 @@ public class ReservationServiceImpl implements ReservationService {
 
     Course course = courseRepository.findById(courseId)
       .orElseThrow(() -> new EntityNotFoundException("Course not found with id: " + courseId));
+    if (course.getSpots() > 0) {
+      Reservation reservation = new Reservation();
+      reservation.setCustomer(customer);
+      reservation.setCourse(course);
+      course.setSpots(course.getSpots() - 1);
+      courseRepository.save(course);
+      return reservationRepository.save(reservation);
+    } else {
+      throw new RuntimeException("No available spots for the course with id: " + courseId);
+    }
 
-    Reservation reservation = new Reservation();
-    reservation.setCustomer(customer);
-    reservation.setCourse(course);
 
-    return reservationRepository.save(reservation);
   }
 
   @Override
