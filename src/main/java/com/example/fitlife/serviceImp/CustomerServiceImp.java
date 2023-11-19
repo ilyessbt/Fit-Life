@@ -64,15 +64,8 @@ public class CustomerServiceImp implements CustomerService {
     customerRepository.deleteById(id);
   }
 
-//  @Override
-//  public void reserveCourse(Long customerId, Long courseId) {
-//    Customer customer = customerRepository.findById(customerId).orElse(null);
-//    Course course = courseRepo.findById(courseId).orElse(null);
-//
-//    if (customer != null && course != null) {
-//      customer.getCourses().add(course);
-//      course.getCustomers().add(customer);
-//      customerRepository.save(customer);
-//    }
-//  }
+  @Override
+  public Customer findByEmail(String email) {
+    return customerRepository.findByEmail(email);
+  }
 }
