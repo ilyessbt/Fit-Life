@@ -11,8 +11,7 @@ public interface CustomerService {
 
   void addCustomer(Customer customer);
 
-  void updateCustomer(Long id, Customer customer);
+  Customer updateCustomerPartial(Long id, Customer updatedCustomer);
 
   void deleteCustomer(Long id);
-//  void reserveCourse(Long customerId, Long courseId);
 }

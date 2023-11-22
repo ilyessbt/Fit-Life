@@ -8,7 +8,8 @@ import java.util.*;
 
 public interface CourseService {
   List<Course> getAllCourses();
-  Map<String, LocalDate> getCurrentWeekDates();
-  List<Course> getCoursesForCurrentWeek();
+  String[] getCurrentWeekDates();
   Course createCourse(Course course);
+  void deleteCourse(Long courseId);
+  Course updateCoursePartial(Long courseId, Course updatedCourse);
 }

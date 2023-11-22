@@ -13,21 +13,31 @@ public class Course {
   private Long id;
   private String title;
   private LocalDate start_date;
-  private LocalDate end_date;
+
   private Boolean availability;
-  private LocalTime start_time;
-  private LocalTime end_time;
-//  @ManyToMany(mappedBy = "courses")
-//  private List<Customer> customers;
+  private String time;
+  private Long spots;
+  public Long getSpots() {
+    return spots;
+  }
 
-//  public List<Customer> getCustomers() {
-//    return customers;
-//  }
-//
-//  public void setCustomers(List<Customer> customers) {
-//    this.customers = customers;
-//  }
+  public void setSpots(Long spots) {
+    this.spots = spots;
+  }
 
+
+
+  @ManyToOne
+  @JoinColumn(name = "coach_id")
+  private Coach coach;
+
+  public Coach getCoach() {
+    return coach;
+  }
+
+  public void setCoach(Coach coach) {
+    this.coach = coach;
+  }
   public Long getId() {
     return id;
   }
@@ -52,14 +62,6 @@ public class Course {
     this.start_date = start_date;
   }
 
-  public LocalDate getEnd_date() {
-    return end_date;
-  }
-
-  public void setEnd_date(LocalDate end_date) {
-    this.end_date = end_date;
-  }
-
   public Boolean getAvailability() {
     return availability;
   }
@@ -68,19 +70,12 @@ public class Course {
     this.availability = availability;
   }
 
-  public LocalTime getStart_time() {
-    return start_time;
+  public String getStart_time() {
+    return time;
   }
 
-  public void setStart_time(LocalTime start_time) {
-    this.start_time = start_time;
+  public void setStart_time(String start_time) {
+    this.time = start_time;
   }
 
-  public LocalTime getEnd_time() {
-    return end_time;
-  }
-
-  public void setEnd_time(LocalTime end_time) {
-    this.end_time = end_time;
-  }
 }

@@ -1,5 +1,6 @@
 package com.example.fitlife.serviceImp;
 
+import com.example.fitlife.model.Coach;
 import com.example.fitlife.model.Course;
 import com.example.fitlife.model.Customer;
 import com.example.fitlife.repository.CourseRepo;
@@ -32,21 +33,30 @@ public class CustomerServiceImp implements CustomerService {
   public void addCustomer(Customer customer) {
     customerRepository.save(customer);
   }
-
   @Override
-  public void updateCustomer(Long id, Customer updatedCustomer) {
-    Optional<Customer> optionalCustomer = customerRepository.findById(id);
+  public Customer updateCustomerPartial(Long id, Customer updatedCustomer) {
+    Optional<Customer> existingCustomerOptional = customerRepository.findById(id);
+    if (existingCustomerOptional.isPresent()){
+      Customer existingCustomer = existingCustomerOptional.get();
+      if (updatedCustomer.getFullname() != null) {
+        existingCustomer.setFullname(updatedCustomer.getFullname());
+      }
 
-    if (optionalCustomer.isPresent()) {
-      Customer existingCustomer = optionalCustomer.get();
-      existingCustomer.setFullname(updatedCustomer.getFullname());
-      existingCustomer.setProfilepic(updatedCustomer.getProfilepic());
-      existingCustomer.setPhonenumber(updatedCustomer.getPhonenumber());
-      existingCustomer.setEmail(updatedCustomer.getEmail());
-      existingCustomer.setPassword(updatedCustomer.getPassword());
+      if (updatedCustomer.getProfilepic() != null) {
+        existingCustomer.setProfilepic(updatedCustomer.getProfilepic());
+      }
 
-      customerRepository.save(existingCustomer);
+      if (updatedCustomer.getPhonenumber() != null) {
+        existingCustomer.setPhonenumber(updatedCustomer.getPhonenumber());
+      }
+
+      return customerRepository.save(existingCustomer);
+
+
+    }else {
+      return null;
     }
+
   }
 
   @Override

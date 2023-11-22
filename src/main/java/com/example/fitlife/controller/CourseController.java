@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
+
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/courses")
 public class CourseController {
@@ -23,16 +25,22 @@ public class CourseController {
     return courseService.getAllCourses();
   }
   @GetMapping("/currentWeekDates")
-  public  Map<String, LocalDate> getCurrentWeekDates() {
+  public  String[] getCurrentWeekDates() {
     return courseService.getCurrentWeekDates();
-  }
-  @GetMapping("/currentWeekCourses")
-  public List<Course> getCoursesForCurrentWeek() {
-    return courseService.getCoursesForCurrentWeek();
   }
 
   @PostMapping("/create")
   public Course createCourse(@RequestBody Course course) {
     return courseService.createCourse(course);
+  }
+
+  @DeleteMapping("/{courseId}")
+  public void deleteCourse(@PathVariable Long courseId) {
+    courseService.deleteCourse(courseId);
+  }
+
+  @PatchMapping("/{courseId}")
+  public Course updateCoursePartial(@PathVariable Long courseId, @RequestBody Course updatedCourse) {
+    return courseService.updateCoursePartial(courseId, updatedCourse);
   }
 }
