@@ -28,10 +28,6 @@ public class CustomerController {
     return customerService.getCustomerById(id);
   }
 
-  @PostMapping("/")
-  public void addCustomer(@RequestBody Customer customer) {
-    customerService.addCustomer(customer);
-  }
 
   @PatchMapping("/{id}")
   public ResponseEntity<Customer> partialUpdateCustomer(@PathVariable Long id, @RequestBody Customer updatedCustomer) {
@@ -47,6 +43,7 @@ public class CustomerController {
   public void deleteCustomer(@PathVariable Long id) {
     customerService.deleteCustomer(id);
   }
+  }
 
 
-}
+

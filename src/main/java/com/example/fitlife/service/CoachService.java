@@ -1,7 +1,7 @@
 package com.example.fitlife.service;
 
 import com.example.fitlife.model.Coach;
-import com.example.fitlife.model.Course;
+
 
 import java.util.List;
 

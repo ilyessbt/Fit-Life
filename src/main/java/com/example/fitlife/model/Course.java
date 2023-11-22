@@ -27,6 +27,8 @@ public class Course {
 
 
 
+
+
   @ManyToOne
   @JoinColumn(name = "coach_id")
   private Coach coach;
@@ -38,6 +40,11 @@ public class Course {
   public void setCoach(Coach coach) {
     this.coach = coach;
   }
+
+
+
+
+
   public Long getId() {
     return id;
   }
@@ -77,5 +84,6 @@ public class Course {
   public void setStart_time(String start_time) {
     this.time = start_time;
   }
+
 
 }

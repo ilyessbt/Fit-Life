@@ -1,8 +1,7 @@
 package com.example.fitlife.controller;
 
 import com.example.fitlife.model.Coach;
-import com.example.fitlife.model.Course;
-import com.example.fitlife.repository.CoachRepo;
+
 import com.example.fitlife.serviceImp.CoachServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

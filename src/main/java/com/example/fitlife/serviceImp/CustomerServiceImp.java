@@ -18,6 +18,7 @@ public class CustomerServiceImp implements CustomerService {
   private CustomerRepo customerRepository;
   @Autowired
   private CourseRepo courseRepo;
+
   @Override
   public List<Customer> getAllCustomers() {
     return customerRepository.findAll();
@@ -33,10 +34,11 @@ public class CustomerServiceImp implements CustomerService {
   public void addCustomer(Customer customer) {
     customerRepository.save(customer);
   }
+
   @Override
   public Customer updateCustomerPartial(Long id, Customer updatedCustomer) {
     Optional<Customer> existingCustomerOptional = customerRepository.findById(id);
-    if (existingCustomerOptional.isPresent()){
+    if (existingCustomerOptional.isPresent()) {
       Customer existingCustomer = existingCustomerOptional.get();
       if (updatedCustomer.getFullname() != null) {
         existingCustomer.setFullname(updatedCustomer.getFullname());
@@ -53,7 +55,7 @@ public class CustomerServiceImp implements CustomerService {
       return customerRepository.save(existingCustomer);
 
 
-    }else {
+    } else {
       return null;
     }
 
@@ -63,16 +65,10 @@ public class CustomerServiceImp implements CustomerService {
   public void deleteCustomer(Long id) {
     customerRepository.deleteById(id);
   }
+  @Override
+  public Customer findByEmail(String email) {
+    return customerRepository.findByEmail(email);
+  }
 
-//  @Override
-//  public void reserveCourse(Long customerId, Long courseId) {
-//    Customer customer = customerRepository.findById(customerId).orElse(null);
-//    Course course = courseRepo.findById(courseId).orElse(null);
-//
-//    if (customer != null && course != null) {
-//      customer.getCourses().add(course);
-//      course.getCustomers().add(customer);
-//      customerRepository.save(customer);
-//    }
-//  }
 }
+

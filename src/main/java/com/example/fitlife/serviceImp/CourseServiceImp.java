@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -75,13 +73,13 @@ public class CourseServiceImp implements CourseService {
       if (updatedCourse.getAvailability() != null) {
         existingCourse.setAvailability(updatedCourse.getAvailability());
 
-      }
 
       if (updatedCourse.getStart_time() != null) {
         existingCourse.setStart_time(updatedCourse.getStart_time());
       }
       if (updatedCourse.getSpots() != null) {
         existingCourse.setSpots(updatedCourse.getSpots());
+
         if (existingCourse.getSpots() == 0) {
           existingCourse.setAvailability(false);
         } else {
@@ -89,6 +87,9 @@ public class CourseServiceImp implements CourseService {
         }
 
       }
+
+      }
+
 
       if (updatedCourse.getCoach() != null) {
         existingCourse.setCoach(updatedCourse.getCoach());

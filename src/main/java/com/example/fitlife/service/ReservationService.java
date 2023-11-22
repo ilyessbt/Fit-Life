@@ -7,6 +7,7 @@ import com.example.fitlife.model.Reservation;
 import java.util.List;
 
 public interface ReservationService {
+
     Reservation makeReservation(Long customerId, Long courseId);
 
     boolean testReservation(Course course, Customer customer);
@@ -15,4 +16,5 @@ public interface ReservationService {
     List<Reservation> getReservationsForCustomer(Long customerId);
     void deleteReservation(Long reservationId);
 
+    Customer findByEmail(String email);
 }

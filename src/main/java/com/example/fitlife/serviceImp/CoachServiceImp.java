@@ -1,7 +1,6 @@
 package com.example.fitlife.serviceImp;
 
 import com.example.fitlife.model.Coach;
-import com.example.fitlife.model.Course;
 import com.example.fitlife.repository.CoachRepo;
 import com.example.fitlife.service.CoachService;
 import org.springframework.beans.factory.annotation.Autowired;

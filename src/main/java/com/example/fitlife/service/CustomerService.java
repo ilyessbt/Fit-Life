@@ -14,4 +14,5 @@ public interface CustomerService {
   Customer updateCustomerPartial(Long id, Customer updatedCustomer);
 
   void deleteCustomer(Long id);
+  Customer findByEmail(String email);
 }

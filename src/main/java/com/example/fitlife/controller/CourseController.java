@@ -13,7 +13,8 @@ import java.time.LocalTime;
 import java.util.*;
 
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 @RestController
 @RequestMapping("/courses")
 public class CourseController {
@@ -24,8 +25,9 @@ public class CourseController {
   public List<Course> getAllCourses() {
     return courseService.getAllCourses();
   }
+
   @GetMapping("/currentWeekDates")
-  public  String[] getCurrentWeekDates() {
+  public String[] getCurrentWeekDates() {
     return courseService.getCurrentWeekDates();
   }
 
