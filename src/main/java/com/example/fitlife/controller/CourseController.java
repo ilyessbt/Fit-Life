@@ -45,4 +45,8 @@ public class CourseController {
   public Course updateCoursePartial(@PathVariable Long courseId, @RequestBody Course updatedCourse) {
     return courseService.updateCoursePartial(courseId, updatedCourse);
   }
+  @GetMapping("/{id}")
+  public Course getCourseById(@PathVariable Long id) {
+    return courseService.getCourseById(id);
+  }
 }

@@ -18,6 +18,12 @@ public class CourseServiceImp implements CourseService {
   private CourseRepo courseRepo;
 
   @Override
+  public Course getCourseById(Long id) {
+    Optional<Course> optionalCourse = courseRepo.findById(id);
+    return optionalCourse.orElse(null);
+  }
+
+  @Override
   public List<Course> getAllCourses() {
     return courseRepo.findAll();
   }

@@ -51,9 +51,10 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public boolean testReservation(Course course, Customer customer) {
         long x = reservationRepository.testreservation(course, customer);
-        if (x>0){
+        if (x>0 ){
             return true;
         }else {
+
             return false;
         }
     }
