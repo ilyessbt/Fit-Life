@@ -30,6 +30,11 @@ public class CoachServiceImp implements CoachService {
     }
 
     @Override
+    public Long countCoach() {
+        return coachRepository.count();
+    }
+
+    @Override
     public void deleteCoach(Long coachId) {
         coachRepository.deleteById(coachId);
     }

@@ -34,7 +34,10 @@ public class CustomerServiceImp implements CustomerService {
   public void addCustomer(Customer customer) {
     customerRepository.save(customer);
   }
-
+  @Override
+  public Long countCustomer() {
+    return customerRepository.count();
+  }
   @Override
   public Customer updateCustomerPartial(Long id, Customer updatedCustomer) {
     Optional<Customer> existingCustomerOptional = customerRepository.findById(id);

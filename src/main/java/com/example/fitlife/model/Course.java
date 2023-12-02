@@ -1,5 +1,7 @@
 package com.example.fitlife.model;
 
+import com.example.fitlife.controller.ReservationController;
+import com.example.fitlife.service.ReservationService;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -22,7 +24,8 @@ public class Course {
   }
 
   public void setSpots(Long spots) {
-    this.spots = spots;
+
+    this.spots= spots;
   }
 
 

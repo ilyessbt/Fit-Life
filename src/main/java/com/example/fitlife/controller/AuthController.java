@@ -3,6 +3,8 @@ package com.example.fitlife.controller;
 import com.example.fitlife.model.Customer;
 import com.example.fitlife.serviceImp.CustomerServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -16,12 +18,14 @@ public class AuthController {
     customerService.addCustomer(customer);
   }
   @PostMapping("/login")
-  public String login(@RequestBody Customer loginRequest) {
+  public ResponseEntity<Long> login(@RequestBody Customer loginRequest) {
     Customer user = customerService.findByEmail(loginRequest.getEmail());
     if (user != null && user.getPassword().equals(loginRequest.getPassword())) {
-      return "Login successful!";
+
+      return ResponseEntity.ok(user.getId());
+
     } else {
-      return "Invalid email or password";
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(-1L);
     }
   }
 }

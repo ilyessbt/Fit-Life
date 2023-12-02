@@ -18,6 +18,12 @@ public interface ResevationRepo extends JpaRepository<Reservation, Long> {
     @Query("SELECT count(r) FROM Reservation r WHERE r.course = :course and r.customer = :customer ")
     long testreservation(@Param("course") Course course, @Param("customer") Customer customer);
 
+    @Query("SELECT count(r) FROM Reservation r WHERE r.course = :course")
+    long ReservationByCourse(@Param("course") Course course);
+
+    @Query("SELECT count(r) FROM Reservation r WHERE r.customer = :customer ")
+    long ReservationByCustomer(@Param("customer") Customer customer);
+
 
 }
 

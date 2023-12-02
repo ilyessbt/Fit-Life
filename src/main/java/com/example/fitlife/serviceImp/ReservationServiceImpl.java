@@ -49,6 +49,11 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    public Long countReservation() {
+        return reservationRepository.count();
+    }
+
+    @Override
     public boolean testReservation(Course course, Customer customer) {
         long x = reservationRepository.testreservation(course, customer);
         if (x>0 ){
@@ -76,5 +81,11 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Customer findByEmail(String email) {
         return customerRepository.findByEmail(email);
+    }
+    public  Long ReservationByCourse(Course course) {
+        return reservationRepository.ReservationByCourse(course);
+    }
+    public  Long ReservationByCustomer(Customer customer) {
+        return reservationRepository.ReservationByCustomer(customer);
     }
 }

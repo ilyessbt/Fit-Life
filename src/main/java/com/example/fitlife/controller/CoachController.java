@@ -49,4 +49,7 @@ public class CoachController {
     public void deleteCoach(@PathVariable Long coachId) {
         coachService.deleteCoach(coachId);
     }
+
+    @GetMapping("/count")
+    public Long contCoach(){ return coachService.countCoach();}
 }

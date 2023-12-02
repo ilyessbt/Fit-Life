@@ -50,6 +50,11 @@ public class CourseServiceImp implements CourseService {
     return courseRepo.findCoursesBetweenDates(startOfWeek, endOfWeek);
   }
 
+
+  @Override
+  public Long countCourse() {
+    return courseRepo.count();
+  }
   @Override
   public Course createCourse(Course course) {
     return courseRepo.save(course);

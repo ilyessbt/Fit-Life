@@ -11,6 +11,7 @@ public interface CourseService {
   Course getCourseById(Long id);
   List<Course> getAllCourses();
   String[] getCurrentWeekDates();
+  Long countCourse();
   Course createCourse(Course course);
   void deleteCourse(Long courseId);
   Course updateCoursePartial(Long courseId, Course updatedCourse);

@@ -12,6 +12,10 @@ public interface ReservationService {
 
     boolean testReservation(Course course, Customer customer);
 
+    Long ReservationByCourse(Course course);
+    Long ReservationByCustomer(Customer customer);
+    Long countReservation();
+
     List<Reservation> getAllReservations();
     List<Reservation> getReservationsForCustomer(Long customerId);
     void deleteReservation(Long reservationId);
