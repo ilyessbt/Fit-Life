@@ -45,7 +45,7 @@ public class CustomerController {
   }
 
   @GetMapping("/count")
-  public Long contCoach(){ return customerService.countCustomer();}
+  public Long contCustomer(){ return customerService.countCustomer();}
   }
 
 
